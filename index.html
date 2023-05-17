@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Todo List</title>
+		<link rel="stylesheet" href="./Style/styles.css" />
+	</head>
+	<body>
+		<div class="todo-app" id="todoApp">
+			<h1>Todo List</h1>
+
+			<ul class="task-list" id="taskList">
+				<!-- Здесь будут отображаться задачи -->
+			</ul>
+
+			<div class="add-task" id="addTask">
+				<input type="text" id="new-task-input" placeholder="Введите новую задачу" />
+				<button id="add-task-button">Добавить</button>
+				<button id="clear-input-button">Очистить</button>
+				<span id="error-message"></span>
+			</div>
+		</div>
+
+		<script type="module" src="./script/main.js"></script>
+	</body>
+</html>
