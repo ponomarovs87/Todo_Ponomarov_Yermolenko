@@ -1,36 +1,13 @@
-import { saveTask } from "./logic/LocalStorage/addNewTask.js";
+import { clearInputButton, newTaskInput, taskList } from "./logic/LocalStorage/naiming.js";
 import { deleteTask } from "./logic/LocalStorage/deleteTask.js";
 import { editTask } from "./logic/LocalStorage/editTask.js";
-
-const clearInputButton = document.getElementById("clear-input-button");
-const newTaskInput = document.getElementById("new-task-input");
-const addTaskButton = document.getElementById("add-task-button");
-const taskList = document.getElementById("taskList");
 
 clearInputButton.addEventListener("click", () => {
   newTaskInput.value = "";
 });
-//кнопка добавления задачи
-addTaskButton.addEventListener("click", () => {
-  const taskText = newTaskInput.value;
 
-  if (taskText.trim() !== "") {
-    const task = {
-      id: Date.now(),
-      text: taskText,
-      checked: false,
-    };
-
-    saveTask(task);
-
-    newTaskInput.value = "";
-
-    const taskItem = createTaskItem(task);
-    taskList.appendChild(taskItem);
-  }
-});
 //кнопка чтобы удалить задачу
-taskList.addEventListener("click", (event) => {
+export function deleteTaskOnClick(event) {
   const target = event.target;
 
   if (target.classList.contains("delete-task-button")) {
@@ -40,23 +17,18 @@ taskList.addEventListener("click", (event) => {
 
     target.parentElement.remove();
   }
-});
+}
+taskList.addEventListener("click", deleteTaskOnClick);
+
 //создание li
-function createTaskItem(task) {
+export function createTaskItem(task) {
   const taskItem = document.createElement("li");
   taskItem.dataset.id = task.id;
 
-  const taskText = document.createElement("span");
-  taskText.textContent = task.text;
-
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Удалить";
-  deleteButton.classList.add("delete-task-button");
+  const taskText = createEl("span", task.text, "task-text");
+  const deleteButton = createEl("button", "Удалить", "delete-task-button");
   deleteButton.dataset.id = task.id;
-
-  const taskCheckbox = document.createElement("input");
-  taskCheckbox.type = "checkbox";
-  taskCheckbox.classList.add("task-checkbox");
+  const taskCheckbox = createEl("input", undefined, "task-checkbox", "checkbox");
   taskCheckbox.dataset.id = task.id;
 
   taskItem.appendChild(taskCheckbox);
@@ -65,6 +37,22 @@ function createTaskItem(task) {
 
   return taskItem;
 }
+
+//создание елемантов в li
+function createEl(htmlEl, textEl, classEl, typeEl) {
+  const element = document.createElement(htmlEl);
+  if (textEl !== undefined) {
+    element.textContent = textEl;
+  }
+  if (classEl !== undefined) {
+    element.classList.add(classEl);
+  }
+  if (typeEl !== undefined) {
+    element.type = typeEl;
+  }
+  return element;
+}
+
 //кнопка чтобы выкреслить задачу
 taskList.addEventListener("click", (event) => {
   const target = event.target;
