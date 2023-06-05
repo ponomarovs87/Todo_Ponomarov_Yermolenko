@@ -11,6 +11,7 @@ export function currectInput() {
 	const textContent = formData.get("text");
 	const deadline = Date.parse(formData.get("deadline"));
 	const newTask = new NewTask(textContent, deadline);
+    console.log(Date.parse(formData.get("deadline")));
 
 	// проба добавить новый обьект в поле убрать в отделный фрил и перелать это фуфлокод
 	{
