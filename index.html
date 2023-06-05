@@ -9,19 +9,38 @@
 		<div class="todo-app" id="todoApp">
 			<h1>Todo List</h1>
 
-			<ul class="task-list" id="taskList">
-				<!-- Здесь будут отображаться задачи -->
+			<ul class="task-list" id="newTaskList">
+				<li>
+					<input type="checkbox" id="checkbox" />
+					<span>text</span>
+					<span>Дата создания</span>
+					<span>Дата окончания</span>
+					<span>осталось до дедлайна</span>
+					<button>изменить</button>
+					<button>удалить</button>
+				</li>
+				<!-- Здесь будут отображаться невыполненые задачи -->
 			</ul>
-
-			<div class="add-task" id="addTask">
-				<input type="text" id="new-task-input" placeholder="Введите новую задачу" />
-				<button id="add-task-button">Добавить</button>
-				<button id="clear-input-button">Очистить</button>
+			<form class="add-task" id="formNewTask">
+				<input type="text" name="text" id="new-task-input" placeholder="Введите новую задачу" />
+				<input name="deadline" type="datetime-local" id="deadline" />
+				<button type="button" id="clear-input-button">Очистить</button>
+				<button type="submit" id="add-task-button">Добавить</button>
 				<span id="error-message"></span>
-			</div>
+			</form>
+			<ul class="task-list" id="finishedTaskList">
+				<li>
+					<input type="checkbox" id="checkbox" checked />
+					text
+					<span>Дата создания</span>
+					<span>Дата окончания</span>
+					<span>Дата когда завершено</span>
+					<button>изменить</button>
+					<button>удалить</button>
+				</li>
+				<!-- Здесь будут отображаться выполненые задачи -->
+			</ul>
 		</div>
-
-		<!-- <script type="module" src="./script/main.js"></script> -->
-		<script src="./script/logic/LocalStorage/editTask.js" type="module"></script>
+		<script type="module" src="./script/main.js"></script>
 	</body>
 </html>
