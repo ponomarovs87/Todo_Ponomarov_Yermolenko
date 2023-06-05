@@ -23,5 +23,4 @@ function findindexByTaskId(id, array) {
 		}
 	}
 	return -1;
-
 }
