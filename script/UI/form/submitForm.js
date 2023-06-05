@@ -15,7 +15,7 @@ export function submitForm(e) {
 	const deadline = Date.parse(formData.get("deadline"));
 	const newTask = new NewTask(textContent, deadline);
 
-	// проба добавить новый обьект в поле
+	// проба добавить новый обьект в поле убрать в отделный фрил и перелать это фуфлокод
 	{
 		const taskItem = document.createElement("li");
 		const checkbox = document.createElement("input");
