@@ -12,7 +12,7 @@ export function submitForm(e) {
 
 	const task1 = newTaskInput.value === "";
 	const task2 = Date.now() >= deadline;
-
+	currectInput();//Убрать на релизе
 	
 	console.log(deadline);
 	console.log(Date.now());

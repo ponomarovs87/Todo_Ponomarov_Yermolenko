@@ -11,6 +11,7 @@ export class NewTask {
 	constructor(textContent, deadline) {
 		this.checkbox = false;
 		this.textContent = textContent;
+		this.id = Date.now();
 		this.dateCreation = Date.now();
 		this.deadline = deadline;
 		this.dateCompletion = null;
